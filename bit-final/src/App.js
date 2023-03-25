@@ -2,7 +2,11 @@ import './App.css';
 
 function App() {
   return (
-    <p>Hello all!</p>
+    <section>
+      <p>Hello all!</p>
+      <p>Andja conflict</p>
+    </section>
+    
   );
 }
 
