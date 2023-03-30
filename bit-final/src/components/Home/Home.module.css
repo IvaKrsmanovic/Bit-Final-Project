@@ -1,10 +1,9 @@
 .container {
 	max-width:1250px;
-	margin-right: auto;
-	margin-left: auto;
 	padding-right: 15px;
 	padding-left: 15px;
 	min-height: 100vh;
+    margin: 50px auto;
 }
 .list{
     display: grid;
@@ -14,13 +13,14 @@
 		minmax(250px, 1fr)
 	);
     justify-items: center;
-    
 }
-.title-search{
+.titleSearch{
     display:flex;
     align-items: center;
-    justify-content: space-between;
-    margin: 15px;
+    justify-content: space-around;
+    margin: 15px 0;
+    border-bottom: 1px solid #F0F0F0;
+    padding-bottom: 1%;
 }
 
 .card{
@@ -38,17 +38,17 @@
 .card:hover{
     box-shadow: 8px 8px rgb(42, 124, 151); 
 }
-.card-img{
+.cardImg{
     width:80%;
     border-radius: 50%;
     border:double 5px rgb(115, 173, 221);
     align-self: center;
 }
-.card-text{
+.cardText{
     text-align: center;
     
 }
-.card-name{
+.cardName{
     font-weight: bold;
     
 }

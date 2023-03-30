@@ -1,7 +1,7 @@
 //import {Link} from 'react-router-dom';
 import './Header.css';
 
-export const Header = () => {
+const Header = () => {
     return (
         <header className='head py-2 shadow-sm'>
             <div className="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
@@ -12,3 +12,5 @@ export const Header = () => {
         </header>
     );
 }
+
+export default Header;

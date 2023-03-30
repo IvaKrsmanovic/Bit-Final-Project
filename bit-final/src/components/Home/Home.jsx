@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { getData } from "../../service/service";
 import Card from "react-bootstrap/Card";
-import "./CandidateList.css";
+import homeStyles from "./Home.module.css";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -21,16 +21,16 @@ const Home = () => {
   const setCandidatesUI = () => {
     return data.map((candidate) => {
       return (
-        <Card className="card" key={candidate.id}>
+        <Card className={homeStyles.card} key={candidate.id}>
           <Card.Img
-            className="card-img"
+            className={homeStyles.cardImg}
             src={candidate.avatar}
             alt={candidate.avatar}
           />
 
           <Card.Body className="d-flex flex-column">
-            <Card.Title className="card-name">{candidate.name}</Card.Title>
-            <Card.Text className="card-text">{candidate.email}</Card.Text>
+            <Card.Title className={homeStyles.cardName}>{candidate.name}</Card.Title>
+            <Card.Text className={homeStyles.cardText}>{candidate.email}</Card.Text>
           </Card.Body>
         </Card>
       );
@@ -38,20 +38,20 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <div className="title-search border-bottom p-2">
+    <div className="pb-5">
+      <div className={homeStyles.titleSearch}>
         <div className="col-4">
           <h2>Candidates</h2>
         </div>
         <div className="col-4">
-          <div className="input-box">
+          <div className="inputBox">
             <input type="text" className="form-control" />
           </div>
         </div>
       </div>
  
-      <div className="container">
-        <div className="list">{setCandidatesUI()}</div>
+      <div className={homeStyles.container}>
+        <div className={homeStyles.list}>{setCandidatesUI()}</div>
       </div>
     </div>
   );
