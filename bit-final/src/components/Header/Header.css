@@ -1,0 +1,10 @@
+.head {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.candidatesBtn {
+    outline: none;
+    border: 1px solid #CCCCCC;
+    border-radius: 5%;
+}
