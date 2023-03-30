@@ -1,9 +1,11 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { CandidateList } from './components/Home/Home'; 
 function App() {
-  return ( 
+  return ( <>
     <p>Hello all!</p>
+    <CandidateList/>
+    </>
   );
 }
 
