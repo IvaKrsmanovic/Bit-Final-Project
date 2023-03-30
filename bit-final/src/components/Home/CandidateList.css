@@ -22,3 +22,33 @@
     justify-content: space-between;
     margin: 15px;
 }
+
+.card{
+    width: 100%;
+    border: solid 1px rgb(122, 189, 218);
+    margin-bottom:20px;
+    border-radius: 10px;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+    text-align: center;
+    box-shadow: 8px 8px lightblue;
+}
+.card:hover{
+    box-shadow: 8px 8px rgb(42, 124, 151); 
+}
+.card-img{
+    width:80%;
+    border-radius: 50%;
+    border:double 5px rgb(115, 173, 221);
+    align-self: center;
+}
+.card-text{
+    text-align: center;
+    
+}
+.card-name{
+    font-weight: bold;
+    
+}
