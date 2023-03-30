@@ -1,14 +1,26 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import { getData } from "../../service/service";
 import { CardItem } from "../CardItem/CardItem";
 import "./CandidateList.css";
 
- 
-export const CandidateList = ()=> {
-    
-        
-        
-      
+const Home = () => {
+  const [data, setData] = useState([]);
 
-    return (
+  const initData = async () => {
+    const dataResult = await getData("candidates");
+    if (dataResult != null && dataResult.length > 0) {
+    setData(dataResult);
+    }
+  };
+
+  useEffect(() => {
+    initData();
+  }, []);
+
+  const setCandidatesUI = () => {
+    return data.map((candidate) => {
+      return (
         <>
         <div className="title-search">
         <div className="col-4"><h2>Candidates</h2></div>
@@ -22,11 +34,21 @@ export const CandidateList = ()=> {
     <div className="container"> 
     
     <div className="list">   
-    {inputArray.map((item, index) => 
     
-        <CardItem key={item.id} name={item.name} email={item.email} avatar={item.avatar}  />)}
+    
+        <CardItem key={candidate.id} name={candidate.name} email={candidate.email} avatar={candidate.avatar}  />
         </div> </div>
         </>
-        
-    )
-}
+      );
+    });
+  };
+
+  return (
+  <>
+    {setCandidatesUI()}
+    </>
+  );
+};
+
+export default Home;
+
