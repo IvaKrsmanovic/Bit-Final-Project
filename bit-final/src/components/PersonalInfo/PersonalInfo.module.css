@@ -1,0 +1,10 @@
+.infoLabel {
+    color: var(--bs-gray-600);
+    /* color: red; */
+}
+
+.infoText {
+    font-size: x-large;    
+    font-weight: 500;
+    margin-left: 2rem;
+}
