@@ -1,13 +1,6 @@
-// create the table component and use it in the CandidateReportsPage.jsx It should show columns with 
-// the following data: Company, Interview date and status.
-// The status column should be divided in 2 columns, left one with the status such as Passed, Declined, and to the right the column with 
-// the eye icon that when clicked is linked to the report overview. 
-// The table should be scrollable and the height of the table should be 90% of the lower part.
-// The page should be responsive and the layout should be changed according to the screen size.
-
 import Container from 'react-bootstrap/esm/Container';
 import Table from 'react-bootstrap/Table';
-import { BsEye } from "react-icons/bs";
+import { BsEye } from "react-icons/bs"
 
 import styles from './Table.module.css';
 
@@ -25,7 +18,7 @@ function BasicExample() {
         </thead>
         <tbody>
           <tr>
-            <td>Google</td>
+            <td></td>
             <td>23.12.2022.</td>
             <td>Passed</td>
             <td><BsEye/></td>

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { getData } from "../../service/service";
-import Card from "react-bootstrap/Card";
+import { CardComponent } from "./CardComponent";
 import homeStyles from "./Home.module.css";
 
 const Home = () => {
@@ -21,18 +21,15 @@ const Home = () => {
   const setCandidatesUI = () => {
     return data.map((candidate) => {
       return (
-        <Card className={homeStyles.card} key={candidate.id}>
-          <Card.Img
-            className={homeStyles.cardImg}
-            src={candidate.avatar}
-            alt={candidate.avatar}
-          />
-
-          <Card.Body className="d-flex flex-column">
-            <Card.Title className={homeStyles.cardName}>{candidate.name}</Card.Title>
-            <Card.Text className={homeStyles.cardText}>{candidate.email}</Card.Text>
-          </Card.Body>
-        </Card>
+        <CardComponent
+          key={candidate.id}
+          id={candidate.id}
+          name={candidate.name}
+          avatar={candidate.avatar}
+          email={candidate.email}
+          birthday={candidate.birthday}
+          education={candidate.education}
+        ></CardComponent>
       );
     });
   };
@@ -49,7 +46,7 @@ const Home = () => {
           </div>
         </div>
       </div>
- 
+
       <div className={homeStyles.container}>
         <div className={homeStyles.list}>{setCandidatesUI()}</div>
       </div>
