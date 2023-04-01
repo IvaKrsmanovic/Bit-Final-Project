@@ -1,9 +1,11 @@
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ReportsPage from './components/ReportsPage/ReportsPage';
 
 function App() {
   return ( 
-    <p>Hello all!</p>
+    <div>
+      <ReportsPage/>
+    </div>
   );
 }
 
