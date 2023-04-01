@@ -2,7 +2,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-
 import styles from './PersonalInfo.module.css';
 
 
@@ -11,7 +10,7 @@ function PersonalInfo() {
     <Container fluid={true} className={styles.marginTop}>
       <Row>
         <Col md={4}>
-          <Image fluid={true} src="./avatarImg.jpg"/>
+          <Image fluid={true} src="../avatarImg.jpg"/>
         </Col>
         <Col md={4}>
             <Row>

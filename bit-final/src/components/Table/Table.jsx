@@ -18,7 +18,7 @@ function BasicExample() {
         </thead>
         <tbody>
           <tr>
-            <td>Google</td>
+            <td></td>
             <td>23.12.2022.</td>
             <td>Passed</td>
             <td><BsEye/></td>
