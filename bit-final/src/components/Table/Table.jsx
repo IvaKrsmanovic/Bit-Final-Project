@@ -1,14 +1,40 @@
-import Container from 'react-bootstrap/esm/Container';
-import Table from 'react-bootstrap/Table';
-import { BsEye } from "react-icons/bs"
+import Container from "react-bootstrap/esm/Container";
+import Table from "react-bootstrap/Table";
+import { BsEye } from "react-icons/bs";
+import styles from "./Table.module.css";
+import Modal from "../Modal/Modal";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getData } from "../../service/service";
 
-import styles from './Table.module.css';
+function ReportsTable() {
+  let { id } = useParams();
 
-function BasicExample() {
+  const [data, setData] = useState([]);
+
+  const initData = async () => {
+    const dataResult = await getData("reports?candidateId=" + id);
+    if (dataResult != null && dataResult.length > 0) {
+      setData(dataResult);
+    }
+  };
+
+  useEffect(() => {
+    initData();
+  }, [id]);
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [reportSelected, setReportSelected] = useState();
+
+  const handlerModal = (id) => {
+    setModalOpen(true);
+    setReportSelected(id);
+  };
+
   return (
     <Container fluid={true}>
       <h2 className={styles.heading}>Reports</h2>
-      <Table striped bordered hover >
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>Company</th>
@@ -17,40 +43,30 @@ function BasicExample() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td>23.12.2022.</td>
-            <td>Passed</td>
-            <td><BsEye/></td>
-          </tr>
-          <tr>
-            <td>Facebook</td>
-            <td>28.11.2022.</td>
-            <td>Declined</td>
-            <td><BsEye/></td>
-          </tr>
-          <tr>
-            <td>Twitter</td>
-            <td>25.11.2022.</td>
-            <td>Passed</td>
-            <td><BsEye/></td>
-          </tr>
-          <tr>
-            <td>Instagram</td>
-            <td>22.11.2022.</td>
-            <td>Passed</td>
-            <td><BsEye/></td>
-          </tr>
-          <tr>
-            <td>LinkedIn</td>
-            <td>23.09.2022.</td>
-            <td>Declined</td>
-            <td><BsEye/></td>
-          </tr>
+          {data.map((report) => (
+            <tr key={report.id}>
+              <td>{report.companyName}</td>
+              <td>{new Date(report.interviewDate).toLocaleDateString()}</td>
+              <td>{report.status}</td>
+              <td>
+                <BsEye
+                  onClick={()=> handlerModal(report.id)}
+                  style={{ cursor: "pointer" }}
+                />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
-    </Container>   
+
+      <Modal
+        open={modalOpen}
+        isOpen={setModalOpen}
+        onClose={() => setModalOpen(false)}
+        data={reportSelected}
+      />
+    </Container>
   );
 }
 
-export default BasicExample;
+export default ReportsTable;
