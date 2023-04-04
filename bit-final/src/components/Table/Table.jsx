@@ -1,10 +1,31 @@
+import React from 'react';
+import { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/esm/Container';
 import Table from 'react-bootstrap/Table';
-import { BsEye } from "react-icons/bs"
-
+import { BsEye } from "react-icons/bs";
 import styles from './Table.module.css';
+import { useParams } from 'react-router-dom';
+import { getData } from '../../service/service';
 
-function BasicExample() {
+
+
+function ReportsTable() {
+  let {id}= useParams();
+
+    const [data, setData] = useState([]);
+  
+    const initData = async () => {
+      const dataResult = await getData("reports?candidateId=" + id);
+      if (dataResult != null && dataResult.length > 0) {
+        setData(dataResult);
+      }
+    };
+  
+    useEffect(() => {
+      initData();
+    }, []);
+
+
   return (
     <Container fluid={true}>
       <h2 className={styles.heading}>Reports</h2>
@@ -17,40 +38,18 @@ function BasicExample() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td>23.12.2022.</td>
-            <td>Passed</td>
-            <td><BsEye/></td>
-          </tr>
-          <tr>
-            <td>Facebook</td>
-            <td>28.11.2022.</td>
-            <td>Declined</td>
-            <td><BsEye/></td>
-          </tr>
-          <tr>
-            <td>Twitter</td>
-            <td>25.11.2022.</td>
-            <td>Passed</td>
-            <td><BsEye/></td>
-          </tr>
-          <tr>
-            <td>Instagram</td>
-            <td>22.11.2022.</td>
-            <td>Passed</td>
-            <td><BsEye/></td>
-          </tr>
-          <tr>
-            <td>LinkedIn</td>
-            <td>23.09.2022.</td>
-            <td>Declined</td>
-            <td><BsEye/></td>
-          </tr>
+          {data.map((report) => (
+            <tr key={report.id}>
+              <td>{report.companyName}</td>
+              <td>{new Date(report.interviewDate).toLocaleDateString()}</td>
+              <td>{report.status}</td>
+              <td><BsEye/></td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </Container>   
   );
 }
 
-export default BasicExample;
+export default ReportsTable;
