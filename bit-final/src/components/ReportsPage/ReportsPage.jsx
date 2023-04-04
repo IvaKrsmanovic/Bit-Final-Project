@@ -1,5 +1,5 @@
 import PersonalInfo from "../PersonalInfo/PersonalInfo";
-import Table from "../Table/Table";
+import ReportsTable from "../Table/Table";
 
 import styles from './ReportsPage.module.css';
 
@@ -11,7 +11,7 @@ function ReportsPage () {
           <PersonalInfo/>
         </section>
         <section>
-          <Table/>       
+          <ReportsTable/>       
         </section>
       </main>
       </>

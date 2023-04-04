@@ -6,6 +6,7 @@ import homeStyles from "./Home.module.css";
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
 
   const initData = async () => {
     const dataResult = await getData("candidates");
@@ -19,7 +20,10 @@ const Home = () => {
   }, []);
 
   const setCandidatesUI = () => {
-    return data.map((candidate) => {
+    return data.filter((candidate) => {
+      return searchValue.toLowerCase() === '' ? 
+      candidate : candidate.name.toLowerCase().includes(searchValue); 
+    }).map((candidate) => {
       return (
         <CardComponent
           key={candidate.id}
@@ -42,7 +46,10 @@ const Home = () => {
         </div>
         <div className="col-4">
           <div className="inputBox">
-            <input type="text" className="form-control" />
+            <form action="">
+              <input type="search" className="form-control" placeholder="Search candidates"
+                onChange={(e) => setSearchValue(e.target.value)} />
+            </form>
           </div>
         </div>
       </div>
