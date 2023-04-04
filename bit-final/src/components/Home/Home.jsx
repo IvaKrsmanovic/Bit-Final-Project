@@ -41,16 +41,14 @@ const Home = () => {
   return (
     <div className="pb-5">
       <div className={homeStyles.titleSearch}>
-        <div className="col-4">
+        <div className="col-5 col-md-8">
           <h2>Candidates</h2>
         </div>
-        <div className="col-4">
-          <div className="inputBox">
+        <div className="col-7 col-md-4">
             <form action="">
               <input type="search" className="form-control" placeholder="Search candidates"
                 onChange={(e) => setSearchValue(e.target.value)} />
             </form>
-          </div>
         </div>
       </div>
 
