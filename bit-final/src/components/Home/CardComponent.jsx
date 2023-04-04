@@ -9,12 +9,12 @@ const navigateToReports = () =>{
 }
 
     return (
-        <Card className={homeStyles.card} key={id}>
+        <Card className={homeStyles.card} key={id} onClick={navigateToReports}>
           
           <Card.Img
             className={homeStyles.cardImg}
             src={avatar}
-            alt={avatar} onClick={navigateToReports}
+            alt={avatar} 
           />
 
           <Card.Body className="d-flex flex-column">

@@ -13,7 +13,9 @@ function ReportsTable() {
   const [data, setData] = useState([]);
 
   const initData = async () => {
-    const dataResult = await getData("reports?candidateId=" + id);
+    const dataResult = await getData("reports", [
+      { key: "candidateId", value: id },
+    ]);
     if (dataResult != null && dataResult.length > 0) {
       setData(dataResult);
     }
@@ -50,7 +52,7 @@ function ReportsTable() {
               <td>{report.status}</td>
               <td>
                 <BsEye
-                  onClick={()=> handlerModal(report.id)}
+                  onClick={() => handlerModal(report.id)}
                   style={{ cursor: "pointer" }}
                 />
               </td>
