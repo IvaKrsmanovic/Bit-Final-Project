@@ -3,8 +3,14 @@
     /* color: red; */
 }
 
-.infoText {
-    font-size: x-large;    
-    font-weight: 500;
-    margin-left: 2rem;
+
+.avatar{
+    max-width: 50%;
+    height: auto;
+    display:block;
+    margin-bottom: 5%;
+}
+.imgContainer{
+    display:flex;
+    justify-content: center;
 }

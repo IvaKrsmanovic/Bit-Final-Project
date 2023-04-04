@@ -3,6 +3,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import styles from './PersonalInfo.module.css';
+import { useParams } from 'react-router-dom';
+import { getData } from '../../service/service';
+import { useState, useEffect } from 'react';
+import { dateHelper } from '../../service/dateHelper';
 
 
 function PersonalInfo() {
@@ -16,7 +20,6 @@ function PersonalInfo() {
         setData(dataResult);
       }
     };
-
     initData();
   }, [id]);
 
