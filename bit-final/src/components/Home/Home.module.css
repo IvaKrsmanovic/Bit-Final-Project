@@ -15,12 +15,13 @@
     justify-items: center;
 }
 .titleSearch{
+    max-width:1250px;
     display:flex;
     align-items: center;
-    justify-content: space-around;
-    margin: 15px 0;
+    justify-content: space-between;
+    margin: 15px auto;
+    padding: 0 15px 15px 15px;
     border-bottom: 1px solid #F0F0F0;
-    padding-bottom: 1%;
 }
 
 .card{
