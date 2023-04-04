@@ -3,38 +3,66 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import styles from './PersonalInfo.module.css';
+import { useParams } from 'react-router-dom';
+import { getData } from '../../service/service';
+import { useState, useEffect } from 'react';
+import { dateHelper } from '../../service/dateHelper';
 
 
 function PersonalInfo() {
+
+  let { id } = useParams();
+
+  const [data, setData] = useState([]);
+
+  
+
+
+
+  useEffect(() => {
+
+    const initData = async () => {
+      const dataResult = await getData("candidates",[{key:"id", value:id}]);
+      if (dataResult != null && dataResult.length > 0) {
+        setData(dataResult);
+      }
+    };
+    initData();
+  }, [id]);
+
+
+   
   return (
-    <Container fluid={true} className={styles.marginTop}>
-      <Row>
-        <Col md={4}>
-          <Image fluid={true} src="../avatarImg.jpg"/>
+
+    (data.map((candidate) =>
+    <Container fluid={true} className={styles.marginTop}  key={candidate.id}>
+      <Row >
+        <Col className={styles.imgContainer} md={4} sm={12}>
+          <Image className={styles.avatar} fluid={true} src={candidate.avatar}/>
         </Col>
-        <Col md={4}>
+        <Col md={4} sm={12}>
             <Row>
               <p className={styles.infoLabel}>Name:</p>
-              <p className={styles.infoText}>Josefina Higgins</p>
+              <p>{candidate.name}</p>
             </Row>
             <Row>
               <p className={styles.infoLabel}>E-mail:</p>
-              <p className={styles.infoText}>Dummy E-mail</p>
+              <p>{candidate.email}</p>
             </Row>
         </Col>
-        <Col md={4}>
+        <Col md={4} sm={12}>
             <Row>   
               <p className={styles.infoLabel}>Date of Birth:</p>
-              <p className={styles.infoText}>Dummy Date of Birth</p>
+              <p>{dateHelper(candidate.birthday)}</p>
             </Row>
             <Row>
               <p className={styles.infoLabel}>Education:</p>
-              <p className={styles.infoText}>Dummy Education</p>
+              <p>{candidate.education}</p>
             </Row>
         </Col>
       </Row>
     </Container>
-  );
+   ) ));
 }
 
 export default PersonalInfo;
