@@ -6,6 +6,7 @@ import Modal from "../Modal/Modal";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getData } from "../../service/service";
+import { dateHelper } from "../../service/dateHelper";
 
 function ReportsTable() {
   let { id } = useParams();
@@ -48,7 +49,7 @@ function ReportsTable() {
           {data.map((report) => (
             <tr key={report.id}>
               <td>{report.companyName}</td>
-              <td>{new Date(report.interviewDate).toLocaleDateString()}</td>
+              <td>{dateHelper(report.interviewDate)}</td>
               <td>{report.status}</td>
               <td>
                 <BsEye

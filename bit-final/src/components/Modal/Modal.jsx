@@ -13,7 +13,7 @@ import {
   MDBRow,
   MDBCol,
 } from "mdb-react-ui-kit";
-
+import { dateHelper } from "../../service/dateHelper";
 const Modal = ({ open, isOpen, onClose, data }) => {
   const [info, setInfo] = useState([]);
 
@@ -63,7 +63,7 @@ const Modal = ({ open, isOpen, onClose, data }) => {
                       <p>Interview Date:</p>
                     </MDBCol>
                     <MDBCol>
-                      <p>{new Date(info.interviewDate).toLocaleDateString()}</p>
+                      <p>{dateHelper(info.interviewDate)}</p>
                     </MDBCol>
                   </MDBRow>
                   <MDBRow>
