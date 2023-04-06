@@ -28,8 +28,6 @@ const Modal = ({ open, isOpen, onClose, data }) => {
     initData();
   }, [data]);
 
-  // const [gridModal, setGridModal] = useState(open);
-
   if (!open) return null;
 
   return (
@@ -45,7 +43,6 @@ const Modal = ({ open, isOpen, onClose, data }) => {
                 color="none"
                 onClick={onClose}
               ></MDBBtn>
-              {/* <p onClick={onClose} style={{ cursor: "pointer" }}>X</p> */}
             </MDBModalHeader>
             <MDBModalBody>
               <MDBRow>
